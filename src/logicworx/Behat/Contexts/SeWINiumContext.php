@@ -57,7 +57,36 @@ class SeWINiumContext extends RawSeWINiumContext implements TranslatableContext
        return;
     }
 
+     /**
+     * Window Exists
+     * Example: Given I can find a window titled "winname"
+     *
+     * @Given /^(?:|I )can find a window titled "([^"]*)"$/
+     */
+    public function iCanFindWindowTitle($title)
+    {
+       $data = $this->CallseWINium("window/find?title=".urlencode($title));
 
+       if (isset($data->{"status"}))
+       {
+            if($data->{"status"}==="OK")
+            {
+                return;
+            }
+            else
+            {
+                throw new \Exception("Window with title '".$title."' could not be found.");
+            }
+       }
+       else
+       {
+        var_dump($data);
+        throw new \Exception("Response from seWINium not understood. ");
+        
+       }
+
+       return;
+    }
 
 
     
