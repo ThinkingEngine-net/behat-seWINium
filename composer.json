@@ -1,0 +1,26 @@
+{
+    "name": "logicworx/behat",
+    "description": "Logic-Worx seWINium Behat Helpers",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "markmarshall",
+            "email": "admin@logic-worx.com"
+        }
+    ],
+    "minimum-stability": "dev",
+     "require": {
+        "php":          ">=5.3.2",
+        "behat/behat":  "~3.0,>=3.0.5",
+        "symfony/config": "~2.2|~3.0"
+    },
+
+    "require-dev": {
+        "phpspec/phpspec":          "~2.0"
+    },
+
+    "autoload": {
+        "psr-4": { "logicworx\\Behat\\": "src/logixworx/Behat/" }
+    }
+
+}
