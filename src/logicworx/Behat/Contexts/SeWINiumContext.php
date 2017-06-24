@@ -14,6 +14,10 @@ use \Behat\Behat\Context\Context;
 
 class SeWINiumContext extends RawSeWINiumContext implements TranslatableContext
 {
+    public function __construct()
+    {
+        $this->LoadConfig();
+    }
     /**
      * Confirms this library is in use - i.e. No exception if it exists
      * Example: Given I am using the seWINium

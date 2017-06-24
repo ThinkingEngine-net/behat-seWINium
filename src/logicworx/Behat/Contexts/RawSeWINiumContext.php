@@ -13,7 +13,7 @@ class RawSeWINiumContext implements seWINiumAwareContext
    public $key="";
    public $cfgJson="{}";
    public $cfgFile="";
-   public function __construct()
+   public function LoadConfig()
    {
 
     
