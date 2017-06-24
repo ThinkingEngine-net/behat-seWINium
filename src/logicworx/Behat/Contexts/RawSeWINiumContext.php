@@ -12,7 +12,7 @@ class RawSeWINiumContext implements seWINiumAwareContext
 {
    public $key="";
    public $cfgJson="{}";
-   public $cfgFile="{}";
+   public $cfgFile="";
    public function __construct()
    {
 
@@ -21,9 +21,15 @@ class RawSeWINiumContext implements seWINiumAwareContext
 
     $configFile=__DIR__."/../../../../../../../sewinium.json";
     $this->cfgFile=$configFile;
-    
 
-    $fHandle = fopen($configFile, "r") or die("Unable to open file!");
+
+    $fHandle = fopen($configFile, "r");
+
+    if($fHandle===false)
+    {
+        throw \Exception("Cannot find seWINium config file!");
+    }
+
     $this->cfgJson = fread($fHandle,filesize($configFile));
 
     fclose($fHandle);
