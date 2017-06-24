@@ -65,7 +65,8 @@ class SeWINiumContext extends RawSeWINiumContext implements TranslatableContext
      */
     public function iCanFindWindowTitle($title)
     {
-       $data = $this->CallseWINium("window/find?title=".urlencode($title));
+       $cmd="window/find?title=".urlencode($title);
+       $data = $this->CallseWINium($cmd);
 
        if (isset($data->{"status"}))
        {
@@ -75,7 +76,7 @@ class SeWINiumContext extends RawSeWINiumContext implements TranslatableContext
             }
             else
             {
-                throw new \Exception("Window with title '".$title."' could not be found.");
+                throw new \Exception("Window with title '".$title."' could not be found. Called'".$cmd."'.");
             }
        }
        else
