@@ -13,6 +13,7 @@ class RawSeWINiumContext implements seWINiumAwareContext
    public function __construct()
    {
 
+    print "Init"
     //Read Config file.
 
     $configFile= "/sewinium.json";
