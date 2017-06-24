@@ -25,7 +25,30 @@ class SeWINiumContext extends RawSeWINiumContext implements TranslatableContext
        return;
     }
 
+
+     /**
+     * Confirms the seWINium key is available - i.e. No exception if it is configured
+     * Example: Given I have a seWINium key
+     *
+     * @Given /^(?:|I )have a seWINium key$/
+     */
+    public function iHaveAPIKey()
+    {
+       if (this->$key=="")
+       {
+        throw("There is no server seWINium key configured.")
+       }
+       return;
+    }
+
+
     
+
+//*******************************************************************************************
+//*******************************************************************************************
+//*******************************************************************************************    
+//*******************************************************************************************
+
      /**
      * Returns list of definition translation resources paths
      *
