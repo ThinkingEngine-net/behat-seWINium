@@ -97,15 +97,39 @@ class SeWINiumContext extends RawSeWINiumContext implements TranslatableContext
 //*******************************************************************************************    
 //*******************************************************************************************
 
+    /***
+        Send command to server
+    ***/
 
-    public  function CallseWINium($cmd)
+    public  function CallseWINium($cmd, $timeoutSeconds=5)
     {
+        // -  Build URL
         $uri="http://127.0.0.1:".$this->port."/".$cmd;
-        $json= file_get_contents($uri);
+
+        // - Setup configuraiton
+
+        $opts = array('http' =>
+              array(
+                'method'  => 'GET',
+                'header'  => "Content-Type: text/html\r\n",
+                'content' => "",
+                'timeout' => $timeoutSeconds
+              )
+            );
+                        
+        
+        $context  = stream_context_create($opts);
+
+        // -  Call webserver
+        $json= file_get_contents($uri,false,$context);
+        
+        // - response not valid - Server not repsponding
         if ($json===false)
         {
            throw new \Exception("Cannot find seWINium Web Server. ".$uri); 
         }
+
+        // - Return decode JSON
 
         $dat= json_decode($json);
 
