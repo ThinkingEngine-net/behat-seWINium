@@ -36,7 +36,7 @@ class SeWINiumContext extends RawSeWINiumContext implements TranslatableContext
     {
        if ($this->key=="")
        {
-        throw("There is no server seWINium key configured.");
+        throw new Exception("There is no server seWINium key configured.");
        }
        return;
     }
