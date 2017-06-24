@@ -11,7 +11,8 @@ use \Behat\Behat\Context\Context;
  *
  * @author Mark Marshall
  */
-class SeWINiumContext extends \Behat\Behat\Context\Context
+
+class SeWINiumContext extends RawSeWINiumContext implements TranslatableContext
 {
     /**
      * Confirms this library is in use - i.e. No exception if it exists
