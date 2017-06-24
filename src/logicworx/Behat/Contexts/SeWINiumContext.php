@@ -36,7 +36,7 @@ class SeWINiumContext extends RawSeWINiumContext implements TranslatableContext
     {
        if ($this->key=="")
        {
-        throw new \Exception("There is no server seWINium key configured :: ".$this->cfgJson);
+        throw new \Exception("There is no server seWINium key configured :: '".$this->cfgFile."' -> ".$this->cfgJson);
        }
        return;
     }
