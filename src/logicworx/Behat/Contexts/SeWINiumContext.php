@@ -2,6 +2,7 @@
 
 use \Behat\Behat\Context\TranslatableContext;
 use \Behat\Gherkin\Node\TableNode;
+use \Behat\Behat\Context\Context;
 
 
 /**
@@ -10,7 +11,7 @@ use \Behat\Gherkin\Node\TableNode;
  *
  * @author Mark Marshall
  */
-class SeWINiumContext extends Context
+class SeWINiumContext extends \Behat\Behat\Context\Context
 {
     /**
      * Confirms this library is in use - i.e. No exception if it exists
