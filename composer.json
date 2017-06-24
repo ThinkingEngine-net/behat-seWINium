@@ -20,7 +20,7 @@
     },
 
     "autoload": {
-        "psr-4": { "logicworx\\Behat\\": "src/logixworx/Behat/" }
+        "psr-4": { "logicworx\\Behat\\": "src/logicworx/Behat/" }
     }
 
 }
