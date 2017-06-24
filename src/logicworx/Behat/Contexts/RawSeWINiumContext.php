@@ -18,7 +18,7 @@ class RawSeWINiumContext implements seWINiumAwareContext
     
     //Read Config file.
 
-    $configFile=__DIR__.'/../../../../../../../sewinium.json";
+    $configFile=__DIR__."/../../../../../../../sewinium.json";
 
     $fHandle = fopen($configFile, "r") or die("Unable to open file!");
     $this->cfgJson = fread($fHandle,filesize($configFile));
