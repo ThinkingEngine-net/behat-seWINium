@@ -26,6 +26,24 @@ class SeWINiumContext extends RawSeWINiumContext implements TranslatableContext
     }
 
     
+     /**
+     * Returns list of definition translation resources paths
+     *
+     * @return array
+     */
+    public static function getTranslationResources()
+    {
+        return self::getSewiniumTranslationResources();
+    }
 
+    /**
+     * Returns list of definition translation resources paths for this dictionary
+     *
+     * @return array
+     */
+    public static function getSewiniumTranslationResources()
+    {
+        return glob(__DIR__.'/../../../../locale/*.xliff');
+    }
     
 }
