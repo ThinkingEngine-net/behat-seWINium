@@ -31,7 +31,7 @@ class RawSeWINiumContext implements seWINiumAwareContext
 
     if (isset($cfg["key"]))
     {
-        this->$key="".$cfg["key"]; // convert to string and set
+        $this->$key="".$cfg["key"]; // convert to string and set
     }
 
    }
