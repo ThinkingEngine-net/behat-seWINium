@@ -45,6 +45,20 @@ class SeWINiumContext extends RawSeWINiumContext implements TranslatableContext
        return;
     }
 
+    /**
+     * Confirms the seWINium is available - i.e. No exception if it is contactable
+     * Example: Given I can contact seWINium
+     *
+     * @Given /^(?:|I )can contact seWINium$/
+     */
+    public function icanaccessSeWINium()
+    {
+       $this->CallseWINium("about");   
+       return;
+    }
+
+
+
 
     
 
@@ -52,6 +66,22 @@ class SeWINiumContext extends RawSeWINiumContext implements TranslatableContext
 //*******************************************************************************************
 //*******************************************************************************************    
 //*******************************************************************************************
+
+
+    public  function CallseWINium($cmd)
+    {
+        $uri="http://127.0.0.1:".$this->port."/".$cmd;
+        $json= file_get_contents($uri);
+        if ($json===false)
+        {
+           throw new \Exception("Cannot find seWINium Web Server. ".$uri); 
+        }
+
+        $dat= json_decode($json);
+
+        return $dat;
+
+    }
 
      /**
      * Returns list of definition translation resources paths

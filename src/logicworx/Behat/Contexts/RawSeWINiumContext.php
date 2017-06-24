@@ -13,6 +13,7 @@ class RawSeWINiumContext implements seWINiumAwareContext
    public $key="";
    public $cfgJson="{}";
    public $cfgFile="";
+   public $port = 8777;
    public function LoadConfig()
    {
 
@@ -42,6 +43,11 @@ class RawSeWINiumContext implements seWINiumAwareContext
     if (isset($cfg->{'key'}))
     {
         $this->key="".$cfg->{'key'}; // convert to string and set
+    }
+
+    if (isset($cfg->{'port'}))
+    {
+        $this->port=intval($cfg->{'port'}); // convert to int and set
     }
 
    }
