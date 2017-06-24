@@ -11,6 +11,7 @@ namespace logicworx\Behat\Contexts;
 class RawSeWINiumContext implements seWINiumAwareContext
 {
    public $key="";
+   public $cfgJson="{}";
    public function __construct()
    {
 
@@ -20,12 +21,12 @@ class RawSeWINiumContext implements seWINiumAwareContext
     $configFile="/sewinium.json";
 
     $fHandle = fopen($configFile, "r") or die("Unable to open file!");
-    $json = fread($fHandle,filesize($configFile));
+    $this->cfgJson = fread($fHandle,filesize($configFile));
 
     fclose($fHandle);
 
     //Import JSON
-    $cfg= json_decode($json);
+    $cfg= json_decode($this->cfgJson);
 
     //Set Config
 
