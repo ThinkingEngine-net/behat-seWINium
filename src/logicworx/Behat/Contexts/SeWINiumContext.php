@@ -34,7 +34,7 @@ class SeWINiumContext extends RawSeWINiumContext implements TranslatableContext
      */
     public function iHaveAPIKey()
     {
-       if ($this->$key=="")
+       if ($this->key=="")
        {
         throw("There is no server seWINium key configured.");
        }
