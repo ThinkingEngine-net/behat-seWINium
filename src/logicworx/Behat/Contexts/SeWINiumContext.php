@@ -76,13 +76,13 @@ class SeWINiumContext extends RawSeWINiumContext implements TranslatableContext
             }
             else
             {
-                throw new \Exception("Window with title '".$title."' could not be found. Called'".$cmd."'.");
+                throw new \Exception("Window with title '".$title."' could not be found. Called '".$cmd."'.");
             }
        }
        else
        {
         var_dump($data);
-        throw new \Exception("Response from seWINium not understood. ");
+        throw new \Exception("Response from seWINium not understood. Called '".$cmd."'.");
         
        }
 
