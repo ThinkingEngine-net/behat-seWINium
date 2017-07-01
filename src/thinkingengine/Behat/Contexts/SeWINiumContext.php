@@ -65,7 +65,7 @@ class SeWINiumContext extends RawSeWINiumContext implements TranslatableContext
      */
     public function iCanFindWindowTitle($title)
     {
-       $cmd="window/find"
+       $cmd="window/find";
        $params="title=".urlencode($title);
        $data = $this->CallseWINium($cmd,$params);
 
