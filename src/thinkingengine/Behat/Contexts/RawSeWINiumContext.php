@@ -1,6 +1,6 @@
 <?php
 
-namespace logicworx\Behat\Contexts;
+namespace thinkingengine\Behat\Contexts;
 
 /**
  * Raw seWINium context for Behat BDD tool.
