@@ -65,8 +65,9 @@ class SeWINiumContext extends RawSeWINiumContext implements TranslatableContext
      */
     public function iCanFindWindowTitle($title)
     {
-       $cmd="window/find?title=".urlencode($title);
-       $data = $this->CallseWINium($cmd);
+       $cmd="window/find"
+       $params="title=".urlencode($title);
+       $data = $this->CallseWINium($cmd,$params);
 
        if (isset($data->{"status"}))
        {
@@ -76,13 +77,13 @@ class SeWINiumContext extends RawSeWINiumContext implements TranslatableContext
             }
             else
             {
-                throw new \Exception("Window with title '".$title."' could not be found. Called '".$cmd."'.");
+                throw new \Exception("Window with title '".$title."' could not be found. Called '".$cmd."' with '".$params."'.");
             }
        }
        else
        {
         var_dump($data);
-        throw new \Exception("Response from seWINium not understood. Called '".$cmd."'.");
+        throw new \Exception("Response from seWINium not understood. Called '".$cmd."' with '".$params."'.");
         
        }
 
@@ -101,10 +102,15 @@ class SeWINiumContext extends RawSeWINiumContext implements TranslatableContext
         Send command to server
     ***/
 
-    public  function CallseWINium($cmd, $timeoutSeconds=5)
+    public  function CallseWINium($cmd, $params, $timeoutSeconds=5)
     {
         // -  Build URL
-        $uri="http://127.0.0.1:".$this->port."/".$cmd;
+        $uri="http://127.0.0.1:".$this->port."/".$cmd."?key=".$this->key;
+
+        if ($params!=="")
+        {
+            $uri=$uri."&".$params;
+        }
 
         // - Setup configuraiton
 
