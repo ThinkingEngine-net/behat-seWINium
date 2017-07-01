@@ -53,7 +53,7 @@ class SeWINiumContext extends RawSeWINiumContext implements TranslatableContext
      */
     public function icanaccessSeWINium()
     {
-       $this->CallseWINium("about");   
+       $this->CallseWINium("about","");   
        return;
     }
 
