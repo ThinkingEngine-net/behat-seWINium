@@ -1,4 +1,4 @@
-<?php namespace logicworx\Behat\Contexts;
+<?php namespace thinkingengine\Behat\Contexts;
 
 use \Behat\Behat\Context\TranslatableContext;
 use \Behat\Gherkin\Node\TableNode;
