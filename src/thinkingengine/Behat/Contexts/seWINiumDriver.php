@@ -138,7 +138,7 @@ class SeWINiumDriver
     public function apiSewiniumVersion()
     {
         $data=$this->CallseWINium("about","");  
-        if (isset($data->{"status"} && isset($data->{"data"}))
+        if (isset($data->{"status"}) && isset($data->{"data"}))
         {
             if($data->{"status"}==="OK")
             {
