@@ -14,8 +14,8 @@ class SeWINiumDriver
     private $cfgFile=""; // The config file path
     private $port = 8777; //  The port to call seWINium om
     private $lastCommand  = ""; //Debug string for last seWINium command called.
-    private $lastWindowHandle = "" // Stores the window handle of the the last window used/found.
-    private $selectedWindowHandle = "" // Stores the window handle of the the selected window.
+    private $lastWindowHandle = ""; // Stores the window handle of the the last window used/found.
+    private $selectedWindowHandle = ""; // Stores the window handle of the the selected window.
 
 
     /*----------------------------------------------
