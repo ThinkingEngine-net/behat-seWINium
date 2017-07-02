@@ -7,7 +7,7 @@ use Behat\Behat\Context\Context;
 /**
  * seWINium aware interface for contexts.
  *
- * @author Mark Marshall
+ * @author Mark Marshall  - ThinkingEngine.net
  */
 interface seWINiumAwareContext extends Context
 {

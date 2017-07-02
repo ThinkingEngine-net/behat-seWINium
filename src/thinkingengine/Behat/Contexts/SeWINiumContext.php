@@ -6,17 +6,19 @@ use \Behat\Behat\Context\Context;
 
 
 /**
- * Logic-Worx seWINium context for Behat BDD tool.
+ * ThinkingEngine.net seWINium context for Behat BDD tool.
  * Builds on Behat Context Capabilities.
  *
- * @author Mark Marshall
+ * @author Mark Marshall  - ThinkingEngine.net
  */
 
 class SeWINiumContext extends RawSeWINiumContext implements TranslatableContext
 {
+    public $Driver; // seWInium Driver
+
     public function __construct()
     {
-        $this->LoadConfig();
+        $this->Driver = new seWINiumDriver;
     }
     /**
      * Confirms this library is in use - i.e. No exception if it exists
@@ -38,7 +40,7 @@ class SeWINiumContext extends RawSeWINiumContext implements TranslatableContext
      */
     public function iHaveAPIKey()
     {
-       if ($this->key=="")
+       if ($this->Driver->getAPIKey()==="")
        {
         throw new \Exception("There is no server seWINium key configured :: '".$this->cfgFile."' -> ".$this->cfgJson);
        }
@@ -53,95 +55,190 @@ class SeWINiumContext extends RawSeWINiumContext implements TranslatableContext
      */
     public function icanaccessSeWINium()
     {
-       $this->CallseWINium("about","");   
+       $ret=$this->Driver->apiSewiniumVersion(); 
        return;
     }
 
+    /* -------------------------------------- Window by title -----------------------------*/
+
      /**
-     * Window Exists
+     * Find a window with title
      * Example: Given I can find a window titled "winname"
      *
      * @Given /^(?:|I )can find a window titled "([^"]*)"$/
      */
     public function iCanFindWindowTitle($title)
     {
-       $cmd="window/find";
-       $params="title=".urlencode($title);
-       $data = $this->CallseWINium($cmd,$params);
-
-       if (isset($data->{"status"}))
-       {
-            if($data->{"status"}==="OK")
-            {
-                return;
-            }
-            else
-            {
-                throw new \Exception("Window with title '".$title."' could not be found. Called '".$cmd."' with '".$params."'.");
-            }
-       }
-       else
-       {
-        var_dump($data);
-        throw new \Exception("Response from seWINium not understood. Called '".$cmd."' with '".$params."'.");
-        
-       }
+        $ret=$this->Driver->apiFindWindowByTitle($title);
+        if ($ret===false)
+        {
+            throw new \Exception("Window with title '".$title."' could not be found. ".$this->Driver->getLastCommand());
+        }
 
        return;
     }
 
+     /**
+     * Select (add for later action) a widnow by title
+     * Example: Given I can select a window titled "winname"
+     *
+     * @Given /^(?:|I )can select a window titled "([^"]*)"$/
+     */
+    public function iCanSelectWindowTitle($title)
+    {
+        $ret=$this->Driver->apiSelectWindowByTitle($title);
+        if ($ret===false)
+        {
+            throw new \Exception("Window with title '".$title."' could not be selected. ".$this->Driver->getLastCommand());
+        }
 
+       return;
+    }
+
+    /**
+     * Find a window with title (Reg Exp)
+     * Example: Then I can find a window titled like "<RegEx>"
+     *
+     * @Given /^(?:|I )can find a window titled like "([^"]*)"$/
+     */
+    public function iCanFindWindowTitleLike($title)
+    {
+        $ret=$this->Driver->apiFindWindowLikeTitle($title);
+        if ($ret===false)
+        {
+            throw new \Exception("Window with title '".$title."' could not be selected. ".$this->Driver->getLastCommand());
+        }
+
+       return;
+    }
+
+    /**
+     * Select (add for later action) a window with title (Reg Exp)
+     * Example: Then I can select a window titled like "<RegEx>"
+     *
+     * @Given /^(?:|I )can select a window titled like "([^"]*)"$/
+     */
+    public function iCanSelectWindowTitleLike($title)
+    {
+        $ret=$this->Driver->apiSelectWindowLikeTitle($title);
+        if ($ret===false)
+        {
+            throw new \Exception("Window with title '".$title."' could not be selected. ".$this->Driver->getLastCommand());
+        }
+
+       return;
+    }
+
+ /* -------------------------------------- Window by class -----------------------------*/
+
+     /**
+     * Find a window with class
+     * Example: Given I can find a window with the class "class"
+     *
+     * @Given /^(?:|I )can find a window with the class "([^"]*)"$/
+     */
+    public function iCanFindWindowClass($title)
+    {
+        $ret=$this->Driver->apiFindWindowByClass($title);
+        if ($ret===false)
+        {
+            throw new \Exception("Window with class '".$title."' could not be found. ".$this->Driver->getLastCommand());
+        }
+
+       return;
+    }
+
+     /**
+     * Select (add for later action) a windows with the class
+     * Example: Given I can select a windows with the class "class"
+     *
+     * @Given /^(?:|I )can select a window with the class "([^"]*)"$/
+     */
+    public function iCanSelectWindowClass($title)
+    {
+        $ret=$this->Driver->apiSelectWindowByClass($title);
+        if ($ret===false)
+        {
+            throw new \Exception("Window with class '".$title."' could not be selected. ".$this->Driver->getLastCommand());
+        }
+
+       return;
+    }
+
+    /**
+     * Find a window with class (Reg Exp)
+     * Example: Then I can find a window with a class like "<RegEx>"
+     *
+     * @Given /^(?:|I )can find a window with a class like "([^"]*)"$/
+     */
+    public function iCanFindWindowClassLike($title)
+    {
+        $ret=$this->Driver->apiFindWindowLikeClass($title);
+        if ($ret===false)
+        {
+            throw new \Exception("Window with class '".$title."' could not be selected. ".$this->Driver->getLastCommand());
+        }
+
+       return;
+    }
+
+    /**
+     * Select (add for later action) a window with class (Reg Exp)
+     * Example: Then I can select a window with a class like "<RegEx>"
+     *
+     * @Given /^(?:|I )can select a window with a class like "([^"]*)"$/
+     */
+    public function iCanSelectWindowClassLike($title)
+    {
+        $ret=$this->Driver->apiSelectWindowLikeClass($title);
+        if ($ret===false)
+        {
+            throw new \Exception("Window with class '".$title."' could not be selected. ".$this->Driver->getLastCommand());
+        }
+
+       return;
+    }
+
+/* -------------------------------------- Active Window -----------------------------*/
+
+     /**
+     * Find active window
+     * Example: Given I can find an active window
+     *
+     * @Given /^(?:|I )can find an active window$/
+     */
+    public function iCanFindActiveWindow()
+    {
+        $ret=$this->Driver->apiFindWindowActive();
+        if ($ret===false)
+        {
+            throw new \Exception("Active window could not be found. ".$this->Driver->getLastCommand());
+        }
+
+       return;
+    }
+
+    /**
+     * Select (add for later action)  active window
+     * Example: Given I can select the active window
+     *
+     * @Given /^(?:|I )can select the active window$/
+     */
+    public function iCanSelectActiveWindow()
+    {
+        $ret=$this->Driver->apiSelectWindowActive();
+        if ($ret===false)
+        {
+            throw new \Exception("Active window could not be selected. ".$this->Driver->getLastCommand());
+        }
+
+       return;
+    }
     
 
-//*******************************************************************************************
-//*******************************************************************************************
-//*******************************************************************************************    
-//*******************************************************************************************
+/********************************************************************************************
+********************************************************************************************/
 
-    /***
-        Send command to server
-    ***/
-
-    public  function CallseWINium($cmd, $params, $timeoutSeconds=5)
-    {
-        // -  Build URL
-        $uri="http://127.0.0.1:".$this->port."/".$cmd."?key=".$this->key;
-
-        if ($params!=="")
-        {
-            $uri=$uri."&".$params;
-        }
-
-        // - Setup configuraiton
-
-        $opts = array('http' =>
-              array(
-                'method'  => 'GET',
-                'header'  => "Content-Type: text/html\r\n",
-                'content' => "",
-                'timeout' => $timeoutSeconds
-              )
-            );
-                        
-        
-        $context  = stream_context_create($opts);
-
-        // -  Call webserver
-        $json= file_get_contents($uri,false,$context);
-        
-        // - response not valid - Server not repsponding
-        if ($json===false)
-        {
-           throw new \Exception("Cannot find seWINium Web Server. ".$uri); 
-        }
-
-        // - Return decode JSON
-
-        $dat= json_decode($json);
-
-        return $dat;
-
-    }
 
      /**
      * Returns list of definition translation resources paths
