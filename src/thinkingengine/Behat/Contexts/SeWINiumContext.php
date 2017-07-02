@@ -14,7 +14,7 @@ use \Behat\Behat\Context\Context;
 
 class SeWINiumContext extends RawSeWINiumContext implements TranslatableContext
 {
-    public $Driver = new seWINiumDriver();
+    public $Driver = new seWINiumDriver;
 
     public function __construct()
     {
