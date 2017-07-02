@@ -67,7 +67,7 @@ class SeWINiumContext extends RawSeWINiumContext implements TranslatableContext
      */
     public function iCanFindWindowTitle($title)
     {
-        $ret=$this->Driver->apiFindWindowByTitle($title)
+        $ret=$this->Driver->apiFindWindowByTitle($title);
         if ($ret===false)
         {
             throw new \Exception("Window with title '".$title."' could not be found. ".$this->Driver->getLastCommand());
