@@ -205,7 +205,7 @@ class SeWINiumContext extends RawSeWINiumContext implements TranslatableContext
      * Find active window
      * Example: Given I can find an active window
      *
-     * @Given /^(?:|I )can find an active window
+     * @Given /^(?:|I )can find an active window$/
      */
     public function iCanFindActiveWindow()
     {
@@ -222,7 +222,7 @@ class SeWINiumContext extends RawSeWINiumContext implements TranslatableContext
      * Select (add for later action)  active window
      * Example: Given I can select the active window
      *
-     * @Given /^(?:|I )can select the active window
+     * @Given /^(?:|I )can select the active window$/
      */
     public function iCanSelectActiveWindow()
     {
