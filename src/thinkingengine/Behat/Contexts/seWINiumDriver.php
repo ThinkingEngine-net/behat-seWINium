@@ -50,7 +50,7 @@ class SeWINiumDriver
         load Config from File
     ----------------------------------------------- */
     private function loadConfig()
-
+    {
    
         //Read Config file.
 
