@@ -206,7 +206,7 @@ class SeWINiumDriver
             $param="&instance=".intval($instance);
         }
 
-        return apiFindWindow($param);
+        return $this->apiFindWindow($param);
     }
 
     /* -------------- Select By Title -------------*/
@@ -232,7 +232,7 @@ class SeWINiumDriver
             $param="&instance=".intval($instance);
         }
 
-        return apiFindWindow($param);
+        return $this->apiFindWindow($param);
     }
 
     /* -------------- Select By Class -------------*/
@@ -258,7 +258,7 @@ class SeWINiumDriver
             $param="&instance=".intval($instance);
         }
 
-        return apiFindWindow($param);
+        return $this->apiFindWindow($param);
     }
 
     /* -------------- Select By Postion -------------*/
@@ -284,7 +284,7 @@ class SeWINiumDriver
             $param="&instance=".intval($instance);
         }
 
-        return apiFindWindow($param);
+        return $this->apiFindWindow($param);
     }
 
     /* -------------- Select By Size -------------*/
@@ -311,7 +311,7 @@ class SeWINiumDriver
             $param="&instance=".intval($instance);
         }
 
-        return apiFindWindow($param);
+        return $this->apiFindWindow($param);
     }
 
     /* -------------- Select Like Title (Regex) -------------*/
@@ -339,7 +339,7 @@ class SeWINiumDriver
             $param="&instance=".intval($instance);
         }
 
-        return apiFindWindow($param);
+        return $this->apiFindWindow($param);
     }
 
     /* -------------- Select Like Class (Regex) -------------*/
@@ -360,7 +360,7 @@ class SeWINiumDriver
     {
         $param="active=true";
 
-        return apiFindWindow($param);
+        return $this->apiFindWindow($param);
     }
 
     /* -------------- Select Like Active -------------*/
@@ -380,7 +380,7 @@ class SeWINiumDriver
     {
         $param="handle=".$lastWindowHandle;
 
-        return apiFindWindow($param);
+        return $this->apiFindWindow($param);
     }
 
     /* -------------- Select Last Active -------------*/
@@ -400,7 +400,7 @@ class SeWINiumDriver
     {
         $param="handle=".$selectedWindowHandle;
 
-        return apiFindWindow($param);
+        return $this->apiFindWindow($param);
     }
 
     /* -------------- Select Window by handle-------------*/
@@ -408,7 +408,7 @@ class SeWINiumDriver
     {
         $param="handle=".$handle;
 
-        return apiFindWindow($param);
+        return $this->apiFindWindow($param);
     }
  
 
