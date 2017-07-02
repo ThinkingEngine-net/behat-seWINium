@@ -215,6 +215,7 @@ class SeWINiumDriver
         $data = $this->apiFindWindowByTitle($title, $instance);
         if ($data!==false)
         {
+            var_dump($data);
             $selectedWindowHandle = $data->{"handle"};
         }
 
