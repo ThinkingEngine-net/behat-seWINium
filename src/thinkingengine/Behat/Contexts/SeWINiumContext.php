@@ -59,8 +59,7 @@ class SeWINiumContext extends RawSeWINiumContext implements TranslatableContext
        return;
     }
 
-    /* -------------------------------------- Window by title -----------------------------
-
+    /* -------------------------------------- Window by title -----------------------------*/
 
      /**
      * Find a window with title
@@ -130,7 +129,7 @@ class SeWINiumContext extends RawSeWINiumContext implements TranslatableContext
        return;
     }
 
- /* -------------------------------------- Window by class -----------------------------
+ /* -------------------------------------- Window by class -----------------------------*/
 
      /**
      * Find a window with class
@@ -200,7 +199,7 @@ class SeWINiumContext extends RawSeWINiumContext implements TranslatableContext
        return;
     }
 
-/* -------------------------------------- Active Window -----------------------------
+/* -------------------------------------- Active Window -----------------------------*/
 
      /**
      * Find active window
@@ -237,10 +236,9 @@ class SeWINiumContext extends RawSeWINiumContext implements TranslatableContext
     }
     
 
-//*******************************************************************************************
-//*******************************************************************************************
-//*******************************************************************************************    
-//*******************************************************************************************
+/********************************************************************************************
+********************************************************************************************/
+
 
      /**
      * Returns list of definition translation resources paths
