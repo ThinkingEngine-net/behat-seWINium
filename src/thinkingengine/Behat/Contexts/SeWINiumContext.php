@@ -6,17 +6,19 @@ use \Behat\Behat\Context\Context;
 
 
 /**
- * Logic-Worx seWINium context for Behat BDD tool.
+ * ThinkingEngine.net seWINium context for Behat BDD tool.
  * Builds on Behat Context Capabilities.
  *
- * @author Mark Marshall
+ * @author Mark Marshall  - ThinkingEngine.net
  */
 
 class SeWINiumContext extends RawSeWINiumContext implements TranslatableContext
 {
+    public $Driver = new seWINiumDriver();
+
     public function __construct()
     {
-        $this->LoadConfig();
+        
     }
     /**
      * Confirms this library is in use - i.e. No exception if it exists
@@ -38,7 +40,7 @@ class SeWINiumContext extends RawSeWINiumContext implements TranslatableContext
      */
     public function iHaveAPIKey()
     {
-       if ($this->key=="")
+       if ($this->Driver->getAPIKey()==="")
        {
         throw new \Exception("There is no server seWINium key configured :: '".$this->cfgFile."' -> ".$this->cfgJson);
        }
@@ -53,7 +55,7 @@ class SeWINiumContext extends RawSeWINiumContext implements TranslatableContext
      */
     public function icanaccessSeWINium()
     {
-       $this->CallseWINium("about","");   
+       $ret=$this->Driver->apiSewiniumVersion(); 
        return;
     }
 
@@ -65,27 +67,11 @@ class SeWINiumContext extends RawSeWINiumContext implements TranslatableContext
      */
     public function iCanFindWindowTitle($title)
     {
-       $cmd="window/find";
-       $params="title=".urlencode($title);
-       $data = $this->CallseWINium($cmd,$params);
-
-       if (isset($data->{"status"}))
-       {
-            if($data->{"status"}==="OK")
-            {
-                return;
-            }
-            else
-            {
-                throw new \Exception("Window with title '".$title."' could not be found. Called '".$cmd."' with '".$params."'.");
-            }
-       }
-       else
-       {
-        var_dump($data);
-        throw new \Exception("Response from seWINium not understood. Called '".$cmd."' with '".$params."'.");
-        
-       }
+        $ret=$this->Driver->apiFindWindowByTitle($title)
+        if ($ret===false)
+        {
+            throw new \Exception("Window with title '".$title."' could not be found. ".$this->Driver->getLastCommand());
+        }
 
        return;
     }
@@ -97,51 +83,6 @@ class SeWINiumContext extends RawSeWINiumContext implements TranslatableContext
 //*******************************************************************************************
 //*******************************************************************************************    
 //*******************************************************************************************
-
-    /***
-        Send command to server
-    ***/
-
-    public  function CallseWINium($cmd, $params, $timeoutSeconds=5)
-    {
-        // -  Build URL
-        $uri="http://127.0.0.1:".$this->port."/".$cmd."?key=".$this->key;
-
-        if ($params!=="")
-        {
-            $uri=$uri."&".$params;
-        }
-
-        // - Setup configuraiton
-
-        $opts = array('http' =>
-              array(
-                'method'  => 'GET',
-                'header'  => "Content-Type: text/html\r\n",
-                'content' => "",
-                'timeout' => $timeoutSeconds
-              )
-            );
-                        
-        
-        $context  = stream_context_create($opts);
-
-        // -  Call webserver
-        $json= file_get_contents($uri,false,$context);
-        
-        // - response not valid - Server not repsponding
-        if ($json===false)
-        {
-           throw new \Exception("Cannot find seWINium Web Server. ".$uri); 
-        }
-
-        // - Return decode JSON
-
-        $dat= json_decode($json);
-
-        return $dat;
-
-    }
 
      /**
      * Returns list of definition translation resources paths
