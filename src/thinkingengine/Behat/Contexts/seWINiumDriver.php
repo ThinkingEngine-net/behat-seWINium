@@ -172,8 +172,9 @@ class SeWINiumDriver
         {
             if($data->{"status"}==="OK")
             {
-                $data->{"data"};
+                
                 $lastWindowHandle=$data->{"data"}->{"handle"};
+                return $data->{"data"};
             }
             else
             {
@@ -187,7 +188,7 @@ class SeWINiumDriver
 
         }
 
-        return;
+        return false;
     }
 
     
