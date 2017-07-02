@@ -274,7 +274,7 @@ class SeWINiumDriver
     } 
 
     /* -------------- Find By Size -------------*/
-    public function apiFindWindowByXY($width,$height, $instance=0)
+    public function apiFindWindowBySize($width,$height, $instance=0)
     {
         $param="w=".urlencode($width)."&h=".urlencode($height);
 
@@ -288,7 +288,7 @@ class SeWINiumDriver
     }
 
     /* -------------- Select By Size -------------*/
-    public function apiSelectWindowByXY($width,$height, $instance=0)
+    public function apiSelectWindowBySize($width,$height, $instance=0)
     {
         $data = apiFindWindowByXY($width,$height, $instance);
         if ($data!==false)
