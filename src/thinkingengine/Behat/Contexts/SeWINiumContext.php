@@ -14,11 +14,11 @@ use \Behat\Behat\Context\Context;
 
 class SeWINiumContext extends RawSeWINiumContext implements TranslatableContext
 {
-    public $Driver = new seWINiumDriver;
+    public $Driver; // seWInium Driver
 
     public function __construct()
     {
-        
+        $this->Driver = new seWINiumDriver;
     }
     /**
      * Confirms this library is in use - i.e. No exception if it exists
