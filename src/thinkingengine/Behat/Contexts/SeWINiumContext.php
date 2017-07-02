@@ -97,9 +97,9 @@ class SeWINiumContext extends RawSeWINiumContext implements TranslatableContext
 
     /**
      * Find a window with title (Reg Exp)
-     * Example: Then I find a window titled like "<RegEx>"
+     * Example: Then I can find a window titled like "<RegEx>"
      *
-     * @Given /^(?:|I )find a window titled like "([^"]*)"$/
+     * @Given /^(?:|I )can find a window titled like "([^"]*)"$/
      */
     public function iCanFindWindowTitleLike($title)
     {
@@ -114,9 +114,9 @@ class SeWINiumContext extends RawSeWINiumContext implements TranslatableContext
 
     /**
      * Select (add for later action) a window with title (Reg Exp)
-     * Example: Then I select a window titled like "<RegEx>"
+     * Example: Then I can select a window titled like "<RegEx>"
      *
-     * @Given /^(?:|I )select a window titled like "([^"]*)"$/
+     * @Given /^(?:|I )can select a window titled like "([^"]*)"$/
      */
     public function iCanSelectWindowTitleLike($title)
     {
@@ -167,9 +167,9 @@ class SeWINiumContext extends RawSeWINiumContext implements TranslatableContext
 
     /**
      * Find a window with class (Reg Exp)
-     * Example: Then I find a window with a class like "<RegEx>"
+     * Example: Then I can find a window with a class like "<RegEx>"
      *
-     * @Given /^(?:|I )find a window with a class like "([^"]*)"$/
+     * @Given /^(?:|I )can find a window with a class like "([^"]*)"$/
      */
     public function iCanFindWindowClassLike($title)
     {
@@ -184,9 +184,9 @@ class SeWINiumContext extends RawSeWINiumContext implements TranslatableContext
 
     /**
      * Select (add for later action) a window with class (Reg Exp)
-     * Example: Then I select a window with a class like "<RegEx>"
+     * Example: Then I can select a window with a class like "<RegEx>"
      *
-     * @Given /^(?:|I )select a window with a class like "([^"]*)"$/
+     * @Given /^(?:|I )can select a window with a class like "([^"]*)"$/
      */
     public function iCanSelectWindowClassLike($title)
     {
