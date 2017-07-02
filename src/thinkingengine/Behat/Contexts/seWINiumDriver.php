@@ -396,7 +396,7 @@ class SeWINiumDriver
     }
 
     /* -------------- Find Selected Window -------------*/
-    public function apiFindWindowLast()
+    public function apiFindWindowSelected()
     {
         $param="handle=".$selectedWindowHandle;
 
