@@ -426,7 +426,7 @@ class SeWINiumDriver
         // -  Build URL
         $uri="http://127.0.0.1:".$this->port."/".$cmd."?key=".$this->key;
 
-        $lastCommand="Called '".$cmd."' with '".$params."' [Target:: ".$uri."]."
+        $lastCommand="Called '".$cmd."' with '".$params."' [Target:: ".$uri."].";
 
         if ($params!=="")
         {
