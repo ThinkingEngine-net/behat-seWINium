@@ -152,7 +152,7 @@ class SeWINiumContext extends RawSeWINiumContext implements TranslatableContext
      * Select (add for later action) a windows with the class
      * Example: Given I can select a windows with the class "class"
      *
-     * @Given /^(?:|I )can select a windows with the class "([^"]*)"$/
+     * @Given /^(?:|I )can select a window with the class "([^"]*)"$/
      */
     public function iCanSelectWindowClass($title)
     {
