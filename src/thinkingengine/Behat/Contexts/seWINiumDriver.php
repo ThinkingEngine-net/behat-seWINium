@@ -213,7 +213,7 @@ class SeWINiumDriver
     public function apiSelectWindowByTitle($title, $instance=0)
     {
         $data = apiFindWindowByTitle($title, $instance);
-        if ($data!===false)
+        if ($data!==false)
         {
             $selectedWindowHandle = $data->{"handle"};
         }
@@ -239,7 +239,7 @@ class SeWINiumDriver
     public function apiSelectWindowByClass($class, $instance=0)
     {
         $data = apiFindWindowByClass($class, $instance);
-        if ($data!===false)
+        if ($data!==false)
         {
             $selectedWindowHandle = $data->{"handle"};
         }
@@ -265,7 +265,7 @@ class SeWINiumDriver
     public function apiSelectWindowByXY($x,$y)
     {
         $data = apiFindWindowByXY($x,$y, $instance);
-        if ($data!===false)
+        if ($data!==false)
         {
             $selectedWindowHandle = $data->{"handle"};
         }
@@ -291,7 +291,7 @@ class SeWINiumDriver
     public function apiSelectWindowByXY($width,$height, $instance=0)
     {
         $data = apiFindWindowByXY($width,$height, $instance);
-        if ($data!===false)
+        if ($data!==false)
         {
             $selectedWindowHandle = $data->{"handle"};
         }
@@ -319,7 +319,7 @@ class SeWINiumDriver
     public function apiSelectWindowLikeTitle($titleRegex, $instance=0)
     {
         $data = apiFindWindowLikeTitle($titleRegex, $instance);
-        if ($data!===false)
+        if ($data!==false)
         {
             $selectedWindowHandle = $data->{"handle"};
         }
@@ -347,7 +347,7 @@ class SeWINiumDriver
     public function apiSelectWindowLikeClass($classRegex, $instance=0)
     {
         $data = apiFindWindowLikeClass($classRegex, $instance);
-        if ($data!===false)
+        if ($data!==false)
         {
             $selectedWindowHandle = $data->{"handle"};
         }
@@ -367,7 +367,7 @@ class SeWINiumDriver
     public function apiSelectWindowActive()
     {
         $data = apiFindWindowActive();
-        if ($data!===false)
+        if ($data!==false)
         {
             $selectedWindowHandle = $data->{"handle"};
         }
@@ -387,7 +387,7 @@ class SeWINiumDriver
     public function apiSelectWindowLast()
     {
         $data = apiFindWindowLast();
-        if ($data!===false)
+        if ($data!==false)
         {
             $selectedWindowHandle = $data->{"handle"};
         }
